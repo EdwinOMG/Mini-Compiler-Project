@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Compiler Demo</title>
+</head>
+<body>
+    <h1>Mini Compiler Demo</h1>
+    <form method="POST">
+        <textarea name="code" rows="10" cols="50">{{ code }}</textarea><br>
+        <button type="submit">Run</button>
+    </form>
+
+    {% if output.lines %}
+        <h2>Results:</h2>
+        {% for line in output.lines %}
+            <p><strong>Line:</strong> {{ line.line }}</p>
+            <p><strong>Tokens:</strong> {{ line.tokens }}</p>
+            <p><strong>AST:</strong> {{ line.ast }}</p>
+            <p><strong>Status:</strong> {{ line.status }}</p>
+            <hr>
+        {% endfor %}
+
+        <h2>Symbol Table:</h2>
+        <ul>
+            {% for name, value in output.symbol_table.items() %}
+                <li>{{ name }} = {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
