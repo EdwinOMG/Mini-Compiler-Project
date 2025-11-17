@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: mini-compiler
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "./run.sh"
